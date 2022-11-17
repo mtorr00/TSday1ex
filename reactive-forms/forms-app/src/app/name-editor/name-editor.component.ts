@@ -14,10 +14,10 @@ export class NameEditorComponent {
   }
 
   profileForm = new FormGroup({
-    firstName: new FormControl('',Validators.required),
-    lastName: new FormControl('',Validators.required),
-    email: new FormControl('',Validators.required),
-    phone: new FormControl('',Validators.required),
+    firstName: new FormControl('',[Validators.required, Validators.minLength(2)]),
+    lastName: new FormControl('',[Validators.required, Validators.minLength(2)]),
+    email: new FormControl('',[Validators.required,Validators.email]),
+    phone: new FormControl('',[Validators.required,Validators.pattern('[^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$]')]),
     address: new FormGroup({
       street: new FormControl(''),
       city: new FormControl(''),

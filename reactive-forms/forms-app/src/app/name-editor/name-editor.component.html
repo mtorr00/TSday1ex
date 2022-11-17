@@ -1,34 +1,43 @@
 <form class="formclass" [formGroup]="profileForm" (ngSubmit)="onSubmit()" #f="ngForm">
     <h2>Name: </h2>
     <label for="first-name">First Name: </label>
-    <input id="first-name" type="text" formControlName="firstName" ngModel required>
+    <input id="first-name" type="text" formControlName="firstName" placeholder="Enter first name">
+    <br>
+    <span *ngIf = "profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched">First Name Required (Min-length 2 char)</span>
     <br>
     <label for="last-name">Last Name: </label>
-    <input id="last-name" type="text" formControlName="lastName">
+    <input id="last-name" type="text" formControlName="lastName" placeholder="Enter last name">
+    <br>
+    <span *ngIf = "profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched">Last Name Required (Min-length 2 char)</span>
+    <br>
     <h2>Email: </h2>
     <label for="email">Email: </label>
-    <input id="email" type="email" formControlName="email">
+    <input id="email" type="email" formControlName="email" placeholder="Enter email">
+    <br>
+    <span *ngIf = "profileForm.get('email')?.invalid && profileForm.get('email')?.touched">Valid Email Required</span>
     <br>
     <label for="phone">Phone: </label>
-    <input id="phone" type="phone" formControlName="phone">
-
-<div formGroupName="address">
+    <input id="phone" type="phone" formControlName="phone" placeholder="Enter phone number">
+    <br>
+    <span *ngIf = "profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched">Valid Phone Number Required</span>
+    <br>
+    <div formGroupName="address">
     <h2>Address: </h2>
   
     <label for="street">Street: </label>
-    <input id="street" type="text" formControlName="street">
+    <input id="street" type="text" formControlName="street" placeholder="Enter street address">
     <br>
     <label for="city">City: </label>
-    <input id="city" type="text" formControlName="city">
+    <input id="city" type="text" formControlName="city" placeholder="Enter city">
     <br>
     <label for="state">State: </label>
-    <input id="state" type="text" formControlName="state">
+    <input id="state" type="text" formControlName="state" placeholder="Enter state">
     <br>
     <label for="zip">Zip Code: </label>
-    <input id="zip" type="text" formControlName="zip">
-</div>
-<p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+    <input id="zip" type="text" formControlName="zip" placeholder="Enter zip code">
+    </div>
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 
-<p>Form Status: {{ profileForm.status }}</p>
+    <p>Form Status: {{ profileForm.status }}</p>
 </form>
